@@ -1,15 +1,38 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
+
+const categories = [
+  {
+    title: 'Chocolate Cupcakes',
+    description: 'Rich and creamy chocolate cupcakes for all the chocolate lovers.',
+    img: '/images/chocolate-cupcakes.jpg'
+  },
+  {
+    title: 'Vanilla Cupcakes',
+    description: 'Classic vanilla cupcakes that are soft, spongy, and just sweet enough.',
+    img: '/images/vanilla-cupcakes.jpg'
+  },
+  {
+    title: 'Fruit-Flavored Cupcakes',
+    description: 'Fresh and zesty fruit-flavored cupcakes perfect for summer days.',
+    img: '/images/fruit-cupcakes.jpg'
+  }
+];
 
 const Index = () => {
-  // TODO: Create the website here!
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Box p={5}>
+      <Heading mb={4} textAlign="center">Welcome to Cupcake Recipes</Heading>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+        {categories.map((category, index) => (
+          <Box key={index} boxShadow="md" p={5} rounded="md">
+            <Image src={category.img} alt={category.title} borderRadius="md" />
+            <Heading size="md" mt={4}>{category.title}</Heading>
+            <Text mt={2}>{category.description}</Text>
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Box>
+  );
 };
 
 export default Index;
